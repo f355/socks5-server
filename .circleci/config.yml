@@ -18,15 +18,15 @@ jobs:
       - run:
           name: Build Docker image
           command:
-            docker build -t serjs/go-socks5-proxy .
+            docker build -t f355/go-socks5-proxy .
       - deploy:
           command: |
             docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
             if [ $CIRCLE_TAG -ne "undefined" ];
             then
-              docker tag serjs/go-socks5-proxy serjs/go-socks5-proxy:$CIRCLE_TAG
-              docker push serjs/go-socks5-proxy:$CIRCLE_TAG
+              docker tag f355/go-socks5-proxy f355/go-socks5-proxy:$CIRCLE_TAG
+              docker push f355/go-socks5-proxy:$CIRCLE_TAG
             else
-              docker tag serjs/go-socks5-proxy serjs/go-socks5-proxy:dev
-              docker push serjs/go-socks5-proxy:dev
+              docker tag f355/go-socks5-proxy f355/go-socks5-proxy:dev
+              docker push f355/go-socks5-proxy:dev
             fi
