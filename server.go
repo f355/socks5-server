@@ -1,15 +1,15 @@
 package main
 
 import (
+	"encoding/json"
 	"github.com/armon/go-socks5"
 	"os"
 	"log"
 )
 
 func main() {
-	creds := socks5.StaticCredentials{
-		os.Getenv("PROXY_USER"):os.Getenv("PROXY_PASSWORD"),
-	}
+	var creds socks5.StaticCredentials
+	json.Unmarshal([]byte(os.Getenv("PROXY_AUTH")), &creds)
 	cator := socks5.UserPassAuthenticator{Credentials: creds}
 	// Create a SOCKS5 server
 	conf := &socks5.Config{
