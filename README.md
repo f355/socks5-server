@@ -4,7 +4,7 @@
 Simple socks5 server using go-socks5 with auth
 
 # Start container with proxy
-```docker run -d --name socks5-proxy -p 1080:1080 -e PROXY_AUTH='{"<PROXY_USER_1>": "<PROXY_PASSWORD_1>", "<PROXY_USER_2>": "<PROXY_PASSWORD_2>"} f355/go-socks5-proxy```
+```docker run -d --name socks5-proxy -p 1080:1080 -e PROXY_AUTH='{"<PROXY_USER_1>": "<PROXY_PASSWORD_1>", "<PROXY_USER_2>": "<PROXY_PASSWORD_2>"}' f355/go-socks5-proxy```
 
 where `PROXY_AUTH` is a JSON map of authorized user names and the respective passwords.
 
