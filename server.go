@@ -3,13 +3,13 @@ package main
 import (
 	"encoding/json"
 	"github.com/armon/go-socks5"
-	"os"
 	"log"
+	"os"
 )
 
 type LoggingCredentials struct {
 	UserPass map[string]string
-	Logger *log.Logger
+	Logger   *log.Logger
 }
 
 func (c LoggingCredentials) Valid(user, password string) bool {
@@ -28,7 +28,6 @@ func (c LoggingCredentials) Valid(user, password string) bool {
 	return false
 }
 
-
 func main() {
 	var user_pass map[string]string
 	json.Unmarshal([]byte(os.Getenv("PROXY_AUTH")), &user_pass)
@@ -37,7 +36,7 @@ func main() {
 
 	creds := LoggingCredentials{
 		UserPass: user_pass,
-		Logger: logger,
+		Logger:   logger,
 	}
 	cator := socks5.UserPassAuthenticator{Credentials: creds}
 
